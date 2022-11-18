@@ -1,0 +1,39 @@
+#box {
+    float: right;
+    background-color: red;
+
+    margin-left: 40%;
+    margin-right: -5%;
+}
+
+.center {
+    position: right;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+}
+
+.center button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+    background: #f5f5f5;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+.a{
+    color: #f5f5f5;
+    /* font-size: lar; */
+    /* font: optional; */
+}
+.navbar-nav{
+  margin: auto;
+  width: 350px;
+  text-align: right;
+}

@@ -1,0 +1,30 @@
+<div class="popup">
+    <div (click)="closeHandler()" class="close-btn">&times;</div>
+    <div class="alert alert-danger" *ngIf="error">
+        <p>{{error}}</p>
+    </div>
+    <div *ngIf="isLoading" style="text-align:center;">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+        <div class="form">
+            <h2>Sign Up</h2>
+            <div  class="form-element">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter your email" ngModel name="email" required email>
+            </div>
+            <div class="form-element">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" ngModel name="password" required
+                    minlength="6">
+
+            </div>
+           
+            <div >
+                <button class="btn" type="submit" [disabled]="!authForm">Sign up</button>
+
+            </div>
+            
+        </div>
+    </form>
+</div>
