@@ -1,20 +1,47 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService, AuthResponseData } from './auth.service';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+// import { AuthService } from "./signup/auth.service";
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit, OnDestroy {
   isLoginMode = true;
+  isAuthenticated =false;
+  private userSub: Subscription;
 
   constructor(private location : Location, private authService: AuthService, private router: Router ) { }
 
   // constructor(){}
+  ngOnInit() {
+    
+      
+    this.userSub= this.authService.user.subscribe(user => {
+        this.isAuthenticated = !!user;
+        console.log(!user);
+        console.log(!!user);
+
+    });
+
+    
+
+    
+}
+ngOnDestroy(){
+    this.userSub.unsubscribe();
+    
+}
+
+onLogout(){
+  this.authService.logout();
+}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;

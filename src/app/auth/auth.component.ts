@@ -1,8 +1,8 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService, AuthResponseData } from './auth.service';
 
 // import { ActivatedRoute, Route, Router } from '@angular/router';
@@ -12,10 +12,33 @@ import { AuthService, AuthResponseData } from './auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit, OnDestroy {
   isLoginMode = false;
+  
+  isAuthenticated =false;
+  private userSub: Subscription;
 
-  constructor(private location : Location, private authService: AuthService ) { }
+  constructor(private location : Location, private authService: AuthService, private router: Router ) { }
+
+
+  ngOnInit() {
+    
+      
+    this.userSub= this.authService.user.subscribe(user => {
+        this.isAuthenticated = !!user;
+        console.log(!user);
+        console.log(!!user);
+
+    });
+
+    
+
+    
+}
+ngOnDestroy(){
+    this.userSub.unsubscribe();
+    
+}
 
   // constructor(){}
 
@@ -52,6 +75,7 @@ export class AuthComponent {
       resData => {
         console.log(resData);
         this.isLoading = false;
+        this.router.navigate(['/player-stats'])
       },
       errorMessage => {
         console.log(errorMessage);

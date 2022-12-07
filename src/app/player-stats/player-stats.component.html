@@ -1,3 +1,61 @@
+<ngx-loading-bar [includeSpinner]="false" [height]="'5px'"></ngx-loading-bar>
+<nav class="navbar navbar-expand-lg  navbar-dark" style="background-color: #120571;">
+  <!-- Navbar content -->
+  <div class="container-fluid">
+    <a class="navbar-brand" >
+      <img
+        src="data:image/png;base64,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"
+        alt="Logo" width="100" height="80" class="d-inline-block align-text-top">
+      </a>
+      <div ><span class="a" ><h1>CricNews</h1></span></div>
+      <!-- <a class="navbar-brand" href="#"> -->
+    <div>  
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button></div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" role="presentation" routerLinkActive="active">
+          <a class="nav-link" aria-current="page" routerLink="/" >Home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/player-stats">Player-Stats</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/series-stats" >play game</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active"  >
+          <a class="nav-link " routerLink="/products" >Purchase</a>
+        </li>
+      </ul>
+    </div>
+    <div class="center" *ngIf="!isAuthenticated"  >
+     <a routerLink="/Login"> <button id="show-login" >Signup</button></a>
+    </div> |||
+    <div class="center" *ngIf="!isAuthenticated">
+      <a routerLink="/Signup"> <button id="show-signup" >Login</button></a>
+     </div>
+
+     <div class="center" *ngIf="isAuthenticated">
+      <a style="cursor: pointer;" ><button id="show-logout" (click)="onLogout()">Logout</button></a>
+     </div>
+    
+
+
+
+
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg  navbar-dark" style="background-color: #0785ed;">
+
+  <h4 class="m-auto" *ngIf="!isAuthenticated">To check live score please login</h4>
+
+  <iframe *ngIf="isAuthenticated"  src="https://www.aajtak.in/live-score/widgets/widget.php?key=at20-8801-lio7-cu5c&theme=1"
+    style="cursor: pointer; width:300%; min-height: 220px; background-color: rgb(11, 126, 226);"></iframe>
+  </nav>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
